@@ -1,3 +1,0 @@
-{"id":"q1","type":"mcq","unit":"Reproductive","difficulty":"easy","stem":"Oxytocin during childbirth causes:","choices":["Ovulation","Uterine contractions","Spermatogenesis","Menstrual shedding"],"answer":1}
-{"id":"q2","type":"open","unit":"Blood Vessels","difficulty":"easy","stem":"What happens when blood pressure drops?","key_points":["Baroreceptors detect low pressure","Sympathetic output increases","Heart rate rises"]}
-{"id":"q3","type":"chain","unit":"Blood Vessels","difficulty":"easy","stem":"Baroreceptor reflex sequence","steps":["Low BP","Baroreceptors fire","Medulla activates SNS","HR increases"],"correct_order":[0,1,2,3]}
