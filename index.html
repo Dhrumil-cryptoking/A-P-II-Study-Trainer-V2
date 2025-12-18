@@ -1,55 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<title>A&P II Study Trainer</title>
-<style>
-body { font-family: system-ui, Arial, sans-serif; background:#f6f6f6; padding:20px; }
-.card { background:#fff; border-radius:12px; padding:16px; margin-bottom:16px; box-shadow:0 6px 18px rgba(0,0,0,.08); }
-button { padding:8px 14px; border-radius:8px; border:none; cursor:pointer; background:#222; color:#fff; }
-button:disabled { opacity:.5; cursor:not-allowed; }
-#mcqChoices label { display:block; padding:8px; margin:6px 0; border-radius:6px; cursor:pointer; }
-#mcqChoices input { margin-right:8px; }
-.pill { display:inline-block; background:#eee; padding:6px 10px; border-radius:20px; margin:4px; cursor:pointer; }
-</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>A&P II Study Trainer (V2)</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+            margin: 24px;
+            max-width: 980px
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .card {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 14px
+        }
+
+        .pill {
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            padding: 8px 12px;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .muted {
+            color: #6b7280
+        }
+
+        button {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: #111827;
+            color: white;
+            cursor: pointer
+        }
+
+        button.secondary {
+            background: white;
+            color: #111827
+        }
+
+        button:disabled {
+            opacity: .5;
+            cursor: not-allowed
+        }
+
+        #mcqChoices label {
+            display: block;
+            padding: 8px 0;
+            cursor: pointer
+        }
+    </style>
 </head>
+
 <body>
+    <h1>A&P II Study Trainer (V2)</h1>
+    <div class="muted">Pick units • pick mode • pick number of questions</div>
 
-<h1>A&P II Study Trainer (V2)</h1>
+    <div class="card">
+        <div class="row">
+            <div class="pill">
+                <strong>Mode:</strong>
+                <select id="mode">
+                    <option value="mixed">Mixed</option>
+                    <option value="mcq">MCQ</option>
+                    <option value="open">Open Response</option>
+                    <option value="chain">Chain Builder</option>
+                </select>
+            </div>
 
-<div class="card">
-<select id="mode">
-<option value="mcq">MCQ</option>
-<option value="open">Open</option>
-<option value="chain">Chain</option>
-</select>
-<button id="startBtn">Start</button>
-</div>
+            <div class="pill">
+                <strong>Questions:</strong>
+                <input id="numQ" type="number" min="1" max="200" value="25" style="width:80px" />
+            </div>
 
-<div id="quizArea" class="card" style="display:none;">
-<div id="qMeta"></div>
-<h3 id="qStem"></h3>
+            <button id="startBtn">Start session</button>
+            <button id="resetBtn" class="secondary">Reset</button>
+        </div>
 
-<div id="mcqBlock">
-<div id="mcqChoices"></div>
-<button id="submitMcq">Submit</button>
-</div>
+        <div style="margin-top:12px">
+            <strong>Units</strong>
+            <div id="unitList" class="row" style="margin-top:10px"></div>
+            <div class="row" style="margin-top:10px">
+                <button id="selectAllBtn" class="secondary">Select all</button>
+                <button id="selectNoneBtn" class="secondary">Select none</button>
+            </div>
+            <div id="loadedMsg" class="muted" style="margin-top:10px"></div>
+        </div>
+    </div>
 
-<div id="openBlock" style="display:none;">
-<textarea id="openAnswer" rows="4" style="width:100%;"></textarea>
-<button id="revealBtn">Reveal key points</button>
-</div>
+    <div id="quiz" class="card" style="display:none">
+        <div id="meta" class="muted"></div>
+        <h2 id="stem" style="margin-top:8px"></h2>
 
-<div id="chainBlock" style="display:none;">
-<div id="chainPool"></div>
-<div id="chainPicked"></div>
-<button id="submitChain">Submit chain</button>
-</div>
+        <div id="mcqBlock">
+            <div id="mcqChoices"></div>
+            <button id="submitBtn">Submit</button>
+        </div>
 
-<div id="feedback"></div>
-<button id="nextBtn" disabled>Next</button>
-</div>
+        <div id="openBlock" style="display:none">
+            <textarea id="openAnswer" rows="4" style="width:100%; padding:10px"></textarea>
+            <button id="submitOpenBtn">Submit</button>
+        </div>
 
-<script src="app.js"></script>
+        <div id="chainBlock" style="display:none">
+            <div class="muted">Chain mode loaded (we’ll show chain UI once data loads).</div>
+            <button id="submitChainBtn">Submit</button>
+        </div>
+
+        <div id="feedback" class="card" style="margin-top:12px; display:none"></div>
+        <div class="row" style="margin-top:12px">
+            <button id="nextBtn" class="secondary" disabled>Next</button>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
 </body>
+
 </html>
