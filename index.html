@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>A&P II Study Trainer</title>
+<style>
+body { font-family: system-ui, Arial, sans-serif; background:#f6f6f6; padding:20px; }
+.card { background:#fff; border-radius:12px; padding:16px; margin-bottom:16px; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+button { padding:8px 14px; border-radius:8px; border:none; cursor:pointer; background:#222; color:#fff; }
+button:disabled { opacity:.5; cursor:not-allowed; }
+#mcqChoices label { display:block; padding:8px; margin:6px 0; border-radius:6px; cursor:pointer; }
+#mcqChoices input { margin-right:8px; }
+.pill { display:inline-block; background:#eee; padding:6px 10px; border-radius:20px; margin:4px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<h1>A&P II Study Trainer (V2)</h1>
+
+<div class="card">
+<select id="mode">
+<option value="mcq">MCQ</option>
+<option value="open">Open</option>
+<option value="chain">Chain</option>
+</select>
+<button id="startBtn">Start</button>
+</div>
+
+<div id="quizArea" class="card" style="display:none;">
+<div id="qMeta"></div>
+<h3 id="qStem"></h3>
+
+<div id="mcqBlock">
+<div id="mcqChoices"></div>
+<button id="submitMcq">Submit</button>
+</div>
+
+<div id="openBlock" style="display:none;">
+<textarea id="openAnswer" rows="4" style="width:100%;"></textarea>
+<button id="revealBtn">Reveal key points</button>
+</div>
+
+<div id="chainBlock" style="display:none;">
+<div id="chainPool"></div>
+<div id="chainPicked"></div>
+<button id="submitChain">Submit chain</button>
+</div>
+
+<div id="feedback"></div>
+<button id="nextBtn" disabled>Next</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
