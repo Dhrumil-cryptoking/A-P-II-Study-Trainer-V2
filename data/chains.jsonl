@@ -1,1 +1,1 @@
-
+{"id":"chain-001","type":"chain","unit":"Endocrine","stem":"Low blood glucose triggers which sequence?","steps":["Pancreas detects low glucose","Alpha cells release glucagon","Liver breaks down glycogen","Blood glucose rises"],"correct_order":[0,1,2,3],"explanation":"Glucagon increases blood glucose through glycogenolysis."}
